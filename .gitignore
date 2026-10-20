@@ -1,0 +1,10 @@
+#compiled programs
+a.out
+build/
+inOneWeekend2
+
+#images to be generated
+*.ppm
+#books
+book/
+

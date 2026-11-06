@@ -8,5 +8,5 @@ if(NOT CMALE_BUILD_TYPE)
     set(CMALE_BUILD_TYPE Release)
 endif()
 
-add_executable(firstImage src/creatingFirstImage.cpp)
-add_executable(secondImage src/creatingSecondImage.cpp)
+add_executable(firstImage learn/creatingFirstImage.cpp)
+add_executable(secondImage learn/creatingSecondImage.cpp)

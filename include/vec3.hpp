@@ -5,16 +5,17 @@
 #include<iostream>
 
 class vec3 {
+public:
     double e[3];
 
     vec3(double e1=0,double e2=0,double e3=0):e{e1,e2,e3}{}
 
-    double x(){return e[0]}
-    double y(){return e[1]}
-    double z(){return e[2]}
+    double x()const {return e[0]; }
+    double y()const {return e[1]; }
+    double z()const {return e[2]; }
 
     vec3 operator -(){return vec3(-e[0],-e[1],-e[2]);}//1
-    double operator[](int i){return e[i];}//2
+    double operator[] (int i)const {return e[i];}//2
     double &operator[](int i){return e[i];}//3
 
     vec3& operator+=(vec3& v){//4
@@ -34,14 +35,14 @@ class vec3 {
         return *this*=(1/t);
     }
 
-    double length_squared(){
+    double length_squared() const{
         return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
     }
 
-    double length(){
+    double length() const{
         return std::sqrt(length_squared());
     }
-}
+};
 
 //vector utility functions 
 
@@ -51,8 +52,8 @@ inline std::ostream& operator<<(std::ostream&out,const vec3& v){
 //in modern c++ inline finction has eveolved to "multiple function defintions are allowed" thsi does not 
 //allows the function body to be defined in multiple files and the linker doesnt throw an error
 
-inline vec3 operator+(const vec3& u,const &vec3 v){
-    return vec3(u[0]+v[0],u[1]+ v1[1],u[2]+v[2]);
+inline vec3 operator+(const vec3& u,const vec3& v){
+    return vec3(u[0]+v[0],u[1]+ v[1],u[2]+v[2]);
 }
 
 inline vec3 operator-(const vec3&u,const vec3&v){
@@ -71,7 +72,7 @@ inline vec3 operator*(double t,const vec3& v){
     return t*v;
 }
 
-inline vec3 operator/(double t,const  vec3&v){
+inline vec3 operator/(const  vec3&v,double t){
     return v*(1/t);
 }
 
@@ -87,3 +88,4 @@ inline vec3 cross(const vec3&u){
     return u/u.length();
 }
 
+#endif
